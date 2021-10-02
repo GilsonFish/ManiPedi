@@ -2,7 +2,7 @@ import sqlite3
 import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter import messagebox
-from entry import CPFEntry, EmailEntry, FoneEntry
+from .entry import CPFEntry, EmailEntry, FoneEntry
 
 
 class TelaCadastro(tk.Frame):
@@ -120,7 +120,7 @@ class TelaCadastro(tk.Frame):
         if all([bool(x)for x in obrigatorios]):
             login = self.login.get().strip()
             cpf = self.cpf.get().strip()
-            res = self.bd.cursor().execute("SELECT login, cpf FROM cliente;").fetchall()
+            res = self.bd.exe("SELECT login, cpf FROM cliente;").fetchall()
             logins = [x[0] for x in res]
             cpfs = [x[1] for x in res]
 
